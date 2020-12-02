@@ -35,3 +35,4 @@ function tempo (pagina) {
 const periodo = tempo(numeroPagina);
 
 console.log(`Pagina ${numeroPagina} vista por ${periodo} segundos.`);
+// ok
