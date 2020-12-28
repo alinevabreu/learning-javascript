@@ -1,100 +1,84 @@
-let primeironumero
-let segundonumero
-let resultado
-let operacao
+const txtEntrada = document.querySelector('input#txt-entrada')
+let valorMemoria = 0
+let operacao = ''
+let temQueLimpar = false
 
+const ADICAO = '+'
+const SUBTRACAO = '-'
+const MULTIPLICACAO = '*'
+const DIVISAO = '/'
+const PORCENTAGEM = '%'
 
-const txtsai = document.querySelector('input#txtsai')
-const txtent = document.querySelector('input#txtent')
+function resultado() {
 
-function numum() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "1"
+    const valorAtual = getValorAtual ()
+    let resposta = 0
+
+    if (operacao === ADICAO) {
+        resposta = somar (valorMemoria, valorAtual)
+    } else if (operacao === SUBTRACAO) {
+        resposta = subtrair (valorMemoria, valorAtual)
+    } else if (operacao === MULTIPLICACAO) {
+        resposta = multiplicar (valorMemoria, valorAtual)
+    } else if (operacao === DIVISAO) {
+        resposta = dividir (valorMemoria, valorAtual)
+    } else if (operacao === PORCENTAGEM) {
+        resposta = porcento (valorMemoria, valorAtual)
     }
-    else {
-    document.txtsai.value = document.txtsai.value + "1"
-    }
+        setValorAtual (resposta)
 }
-function numdois() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "2"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "2"
-    }
+
+function subtrair(a, b) {
+    return a - b
 }
-function numtres() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "3"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "3"
-    }
+
+function somar(a, b) {
+    return a + b
 }
-function numquatro() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "4"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "4"
-    }
+
+function multiplicar(a, b) {
+    return a * b
 }
-function numcinco() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "5"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "5"
-    }
+
+function dividir(a, b) {
+    return a / b
 }
-function numseis() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "6"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "6"
-    }
+function porcento(a) {
+    return a / 100
 }
-function numsete() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "7"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "7"
-    }
+function setOperacao (novaOperacao) {
+    valorMemoria = getValorAtual ()
+    operacao = novaOperacao
+    temQueLimpar = true
+
+    console.log({operacao, valorMemoria})
 }
-function numoito() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "8"
+
+function insereNumbero (numero) {
+    
+    if (temQueLimpar) {
+        setValorAtual (0)
+        temQueLimpar = false
     }
-    else {
-    document.txtsai.value = document.txtsai.value + "8"
+
+    const valorAtual = getValorAtual()
+    if (valorAtual === 0) {
+        setValorAtual (numero)
+        return
     }
+
+    const novoValor = valorAtual * 10 + numero
+    setValorAtual (novoValor)
 }
-function numnove() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "9"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "9"
-    }
+
+function getValorAtual () {
+    return Number(txtEntrada.value)
 }
-function numzero() {
-    if (document.txtsai.value == "0" || document.txtsai.value == resultado) {
-        document.txtsai.value = "0"
-    }
-    else {
-    document.txtsai.value = document.txtsai.value + "0"
-    }
+
+function setValorAtual (numero) {
+    txtEntrada.value = numero
 }
+
 function limpar() {
-    document.txtsai.value = "0"
-    document.textent.value = ""
-    return
-}
-function adicao() {
-    operacao = "+"
-    primeironumero = parseInt(document.txtsai.value)
-    document.txtsai.value = "0"
-    document.textent.value = primeironumero + operacao
+    setValorAtual (0)
 }

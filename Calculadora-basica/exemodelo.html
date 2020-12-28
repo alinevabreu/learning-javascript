@@ -14,27 +14,30 @@
         <p></p>
     </header>
     <section>
-        <div>
-            <input type="text" name="txtentrada" id="txtent" value=""/>
-            <input type="text" name="txtsaida" id="txtsai" value="0"/>
+        <div>            
+            <input type="number" id="txt-entrada" value="0"/>
         </div>
         <div id='calculadora'>
-            <input type="button" id="num1" value="1" onclick="numum()"/>
-            <input type="button" id="num2" value="2" onclick="numdois()"/>
-            <input type="button" id="num3" value="3" onclick="numtres()"/>
-            <input type="button" id="adicao" value="+" onclick="adicao()"/><br>
-            <input type="button" id="num4" value="4" onclick="numquatro()"/>
-            <input type="button" id="num5" value="5" onclick="numcinco()"/>
-            <input type="button" id="num6" value="6" onclick="numseis()"/>
-            <input type="button" id="multiplicacao" value="*" onclick="multiplicacao()"/><br>
-            <input type="button" id="num7" value="7" onclick="numsete()"/>
-            <input type="button" id="num8" value="8" onclick="numoito()"/>
-            <input type="button" id="num9" value="9" onclick="numnove()"/>
-            <input type="button" id="subtracao" value="-" onclick="subtracao()"/><br>
-            <input type="button" id="num0" value="0" onclick="numzero()"/>
-            <input type="button" id="porcentagem" value="%" onclick="porcentagem()"/>
-            <input type="button" id="divisao" value="/" onclick="divisao()"/>
+            <input type="button" id="num1" value="1" onclick="insereNumbero(1)"/>
+            <input type="button" id="num2" value="2" onclick="insereNumbero(2)"/>
+            <input type="button" id="num3" value="3" onclick="insereNumbero(3)"/>
+            <input type="button" id="adicao" value="+" onclick="setOperacao( ADICAO )"/><br>
+
+            <input type="button" id="num4" value="4" onclick="insereNumbero(4)"/>
+            <input type="button" id="num5" value="5" onclick="insereNumbero(5)"/>
+            <input type="button" id="num6" value="6" onclick="insereNumbero(6)"/>
+            <input type="button" id="multiplicacao" value="*" onclick="setOperacao( MULTIPLICACAO)"/><br>
+
+            <input type="button" id="num7" value="7" onclick="insereNumbero(7)"/>
+            <input type="button" id="num8" value="8" onclick="insereNumbero(8)"/>
+            <input type="button" id="num9" value="9" onclick="insereNumbero(9)"/>
+            <input type="button" id="subtracao" value="-" onclick="setOperacao( SUBTRACAO )"/><br>
+
+            <input type="button" id="num0" value="0" onclick="insereNumbero(0)"/>
+            <input type="button" id="porcentagem" value="%" onclick="setOperacao( PORCENTAGEM )"/>
+            <input type="button" id="divisao" value="/" onclick="setOperacao( DIVISAO )"/>
             <input type="button" id="limpar" value="C" onclick="limpar()"/><br>
+
             <input type="button" id="resultado" value="=" onclick="resultado()"/>
         </div>
     </section>
