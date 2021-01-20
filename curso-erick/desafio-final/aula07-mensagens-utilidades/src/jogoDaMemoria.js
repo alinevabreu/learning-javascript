@@ -1,8 +1,9 @@
 class JogoDaMemoria {
     // se mandar um obj = { tela: 1, idade: 2, etc: 3}
     // vai ignorar o resto das propriedades e pega somente a propriedade tela
-    constructor({ tela }) {
+    constructor({ tela, util }) {
         this.tela = tela
+        this.util = util
         // caminho do arquivo, sempre relativo ao index.html!
         this.heroisIniciais = [
             { img: './arquivos/suicide.png', nome: 'suicide' },
@@ -26,21 +27,24 @@ class JogoDaMemoria {
         this.tela.configurarBotaoVerificarSelecao(this.verificarSelecao.bind(this))
     }
 
-    embaralhar() {
+    async embaralhar() {
         const copias = this.heroisIniciais
             // Duplicar os itens
-            .concat(this.heroisIniciais)
+        .concat(this.heroisIniciais)
             // entrar em cada item e criar um id aleatorio
-            .map(item => {
-                return Object.assign({}, item, { id: Math.random() / 0.5})
-            })
+        .map(item => {
+            return Object.assign({}, item, { id: Math.random() / 0.5})
+        })
             // ordenar aleatoriamente
-            .sort (() => Math.random() - 0.5)
+        .sort (() => Math.random() - 0.5)
+
         this.tela.atualizarImagens(copias)
+        this.tela.exibirCarregando()
         // vamos esperar 1 segundo para atualizar a tela
-        setTimeout(() => {
-            this.esconderHerois(copias)
-        }, 1000)
+        await this.util.timeout(1000)    
+        this.esconderHerois(copias)
+        this.tela.exibirCarregando(false)
+        
     }
     esconderHerois(herois) {
         // vamos trocar a imagem de todos os herois existentes pelo icone padrao

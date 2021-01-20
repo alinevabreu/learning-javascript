@@ -2,7 +2,7 @@ const ID_CONTEUDO = "conteudo"
 const ID_BTN_JOGAR = "jogar"
 const ID_MENSAGEM = "mensagem"
 const CLASSE_INVISIVEL = "invisible"
-const MENSAGEM = {
+const MENSAGENS = {
     sucesso: {
         texto: 'Combinacao correta!',
         classe: 'alert-success'
