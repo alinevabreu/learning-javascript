@@ -11,6 +11,8 @@ class JogoDaMemoria {
             { img: './arquivos/brancadeneve.png', name: 'brancadeneve' }
 
         ]
+        this.iconePadrao = './arquivos/avatar.png' 
+        this.heroisEscondidos = []
     }
 
     // para usar o this, nao podemos usar o static!
@@ -33,8 +35,28 @@ class JogoDaMemoria {
             // ordenar aleatoriamente
             .sort (() => Math.random() - 0.5)
         this.tela.atualizarImagens(copias)
+        // vamos esperar 1 segundo para atualizar a tela
+        setTimeout(() => {
+            this.esconderHerois(copias)
+        }, 1000)
     }
-
+    esconderHerois(herois) {
+        // vamos trocar a imagem de todos os herois existentes pelo icone padrao
+        //como fizemos no construtor, vamos extrair somente o necessario
+        // usando a sintaxe ({ chave: 1}) estamos falando que vamos retornar
+        // o que tiver dentro dos parenteses
+        // quando nao usamos: (exemplo di id), o JS entende que o nome 
+        // é o mesmo valor. Ex.id: id, vira id,
+        const heroisOcultos = herois.map(({ nome, id}) => ({
+            id,
+            nome,
+            img: this.iconePadrao
+        }))
+        // atualizamos a tela com os herois ocultos
+        this.tela.atualizarImagens(heroisOcultos)
+        // guardamos os herois para trabalhar com eles depois
+        this.heroisOcultos = heroisOcultos
+    }
     jogar() {
         this.embaralhar()
     }

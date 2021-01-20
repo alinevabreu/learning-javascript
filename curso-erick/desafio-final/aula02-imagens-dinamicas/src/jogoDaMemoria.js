@@ -5,7 +5,7 @@ class JogoDaMemoria {
         this.tela = tela
         // caminho do arquivo, sempre relativo ao index.html!
         this.heroisIniciais = [
-            { img: './arquivos/avatar.png', name: 'avatar' },
+            { img: './arquivos/suicide.png', name: 'suicide' },
             { img: './arquivos/ariel.png', name: 'ariel' },
             { img: './arquivos/bela.png', name: 'bela' },
             { img: './arquivos/brancadeneve.png', name: 'brancadeneve' }
